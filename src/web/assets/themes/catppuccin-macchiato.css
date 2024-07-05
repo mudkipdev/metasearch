@@ -1,0 +1,26 @@
+:root {
+    --bg-1: #24273A; /* background */
+    --bg-2: #1E2030; /* mantle */
+    --bg-3: #181926; /* crust */
+    --bg-4: #363A4E; /* surface 0 */
+    --fg-1: #CAD3F5; /* text */
+    --fg-2: #B8C0E0; /* subtext 1 */
+    --fg-2: #A5ADCB; /* subtext 0 */
+    --accent: #C6A0F6; /* mauve */
+    --positive: #A6DA95; /* green */
+    --negative: #ED8796; /* red */
+
+    --syntax-string: #A6DA95; /* green (string) */
+    --syntax-special: #C69FF5; /* mauve (keyword) */
+    --syntax-constant: #F5A97F; /* peach (constant/number) */
+    --syntax-comment: #929AB7; /* overlay 2 (comment) */
+    --syntax-func: #8AADF3; /* blue (method/function) */
+
+    --link: var(--accent);
+    --link-visited: var(--link);
+}
+
+::selection {
+    background-color: #C6A0F6;
+    color: #181926;
+}

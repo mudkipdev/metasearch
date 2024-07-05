@@ -1,36 +1,4 @@
-:root {
-  /* body background */
-  --bg-1: #0b0e14;
-  /* background of the content */
-  --bg-2: #0d1017;
-  /* input suggestions background */
-  --bg-3: #0f131a;
-  /* mostly borders */
-  --bg-4: #234;
-
-  /* main text color */
-  --fg-1: #bfbdb6;
-  /* search result description */
-  --fg-2: #bba;
-  --fg-3: #998;
-
-  /* focus outline */
-  --accent: #e6b450;
-
-  --link: #29e;
-  --link-visited: #92e;
-
-  /* green, success */
-  --positive: #7fd962;
-  /* red, error */
-  --negative: #d95757;
-
-  --syntax-string: #aad94c;
-  --syntax-special: #e6b673;
-  --syntax-constant: #d2a6ff;
-  --syntax-comment: #acb6bf8c;
-  --syntax-func: #ffb454;
-}
+@import "themes/catppuccin-macchiato.css";
 
 html {
   height: 100%;
