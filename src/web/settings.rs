@@ -20,7 +20,6 @@ pub async fn get(Extension(config): Extension<Config>) -> impl IntoResponse {
     };
 
     let html = html! {
-        (PreEscaped("<!-- source code: https://github.com/mat-1/metasearch2 -->\n"))
         (DOCTYPE)
         html lang="en" {
             {(head_html(Some("settings"), &config))}

@@ -12,7 +12,7 @@ or other engines. Run your own instance instead!
 
 The easiest way to install metasearch is with `cargo install metasearch`. To get
 the unstable version with the latest features, you can install it with
-`cargo install --git https://github.com/mat-1/metasearch2`.
+`cargo install --git https://github.com/mudkipdev/metasearch`.
 
 Usage: `metasearch [config_file]`
 
