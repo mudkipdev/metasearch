@@ -1,13 +1,4 @@
-                                   ==========
-                                   metasearch
-                                   ==========
-
-                      https://github.com/mat-1/metasearch2
-
-----
-INFO
-----
-
+# metasearch
 metasearch (aka metasearch2) is a cute metasearch engine. It sources its results
 from Google, Bing, Brave, and several others. It's designed to be as lightweight
 as possible, both on the server and client. There is no required client-side
@@ -17,9 +8,7 @@ There's a public demo instance at https://s.matdoes.dev, but please do not use
 it as your default or rely on it. This is so I don't get ratelimited by Google
 or other engines. Run your own instance instead!
 
-------------
-INSTALLATION
-------------
+## Installation
 
 The easiest way to install metasearch is with `cargo install metasearch`. To get
 the unstable version with the latest features, you can install it with
@@ -30,37 +19,33 @@ Usage: `metasearch [config_file]`
 The config_file argument is optional; if it's not specified then it'll be
 checked at the following locations:
 
-  - $XDG_CONFIG_HOME/metasearch/config.toml
-  - $HOME/.config/metasearch/config.toml
-  - ./config.toml
+- $XDG_CONFIG_HOME/metasearch/config.toml
+- $HOME/.config/metasearch/config.toml
+- ./config.toml
 
 If no config file exists, it'll be created at the first valid path in the list.
 
 By default, metasearch runs on the port 28019. You are recommended to use a
 reverse proxy.
 
--------------
-CONFIGURATION
--------------
+## Configuration
 
 You can see all the default config options at `src/config.rs`. Some interesting
 options you may want to change are:
 
-  - bind - the host and port that the web server runs on, for example
-    `0.0.0.0:28019`.
-  - api - whether your instance is accessible through a JSON API. See below for
-    more details.
-  - ui.stylesheet_url - a link to a stylesheet that will be loaded alongside the
-    main one, for example `/themes/catppuccin-mocha.css`.
-  - image_search.enabled - add a tab for viewing image results for your query.
-    this is disabled by default as the image proxy could be used to make GET
-    requests to arbitrary URLs from your server.
-  - engines.google.weight - the ranking score multiplier for an engine, you can
-    modify this if you prefer the results from certain engines.
+- bind - the host and port that the web server runs on, for example
+`0.0.0.0:28019`.
+- api - whether your instance is accessible through a JSON API. See below for
+more details.
+- ui.stylesheet_url - a link to a stylesheet that will be loaded alongside the
+main one, for example `/themes/catppuccin-mocha.css`.
+- image_search.enabled - add a tab for viewing image results for your query.
+this is disabled by default as the image proxy could be used to make GET
+requests to arbitrary URLs from your server.
+- engines.google.weight - the ranking score multiplier for an engine, you can
+modify this if you prefer the results from certain engines.
 
---------
-JSON API
---------
+## JSON API
 
 metasearch has a JSON API that can be enabled by setting `api = true` in your
 config. To use it, set the `Accept: application/json` header in your requests.
