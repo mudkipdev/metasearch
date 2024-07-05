@@ -49,11 +49,13 @@ pub fn merge_engine_responses(
                 existing_result.engines.insert(engine);
                 existing_result.score += result_score;
             } else {
-                search_results.push(SearchResult {
-                    result: search_result,
-                    engines: [engine].iter().copied().collect(),
-                    score: result_score,
-                });
+                if !filter_spam(search_result.url.as_str()) {
+                    search_results.push(SearchResult {
+                        result: search_result,
+                        engines: [engine].iter().copied().collect(),
+                        score: result_score,
+                    });
+                }
             }
         }
 
@@ -63,7 +65,9 @@ pub fn merge_engine_responses(
                 let other_engine_config = config.engines.get(s.engine);
                 other_engine_config.weight
             });
-            if engine_config.weight > featured_snippet_weight {
+            if engine_config.weight > featured_snippet_weight
+                && !filter_spam(engine_featured_snippet.url.as_str())
+            {
                 featured_snippet = Some(FeaturedSnippet {
                     url: engine_featured_snippet.url,
                     title: engine_featured_snippet.title,
@@ -186,11 +190,13 @@ pub fn merge_images_responses(
                 existing_result.engines.insert(engine);
                 existing_result.score += result_score;
             } else {
-                image_results.push(SearchResult {
-                    result: image_result,
-                    engines: [engine].iter().copied().collect(),
-                    score: result_score,
-                });
+                if !filter_spam(image_result.page_url.as_str()) {
+                    image_results.push(SearchResult {
+                        result: image_result,
+                        engines: [engine].iter().copied().collect(),
+                        score: result_score,
+                    });
+                }
             }
         }
     }
@@ -201,4 +207,49 @@ pub fn merge_images_responses(
         image_results,
         config,
     }
+}
+
+fn filter_spam(url: &str) -> bool {
+    let spam_list = vec![
+        "forgeeks",
+        "quora",
+        "yahoo",
+        "tecmint",
+        "alternativeto",
+        "hackerearth",
+        "linuxgenie",
+        "codeofcode",
+        "tecadmin",
+        "dev.to",
+        "linuxconfig.org",
+        "linuxtechi",
+        "nixcraft",
+        "learnitguide",
+        "howtogeek",
+        "techrepublic",
+        "codeopolis",
+        "technoyard",
+        "techreviews",
+        "simplilearn",
+        "linuxize",
+        "cyberciti",
+        "savvyit",
+        "sitepoint",
+        "phoenixnap",
+        "devconnected",
+        "wpdiaries",
+        "educba",
+        "javatpoint",
+        "educative",
+        "tutorialspoint",
+        "cosmiclearn",
+        "rookienerd",
+        "nakivo",
+        "vinchin",
+        "cloudthat",
+        "virten",
+        "geek-university",
+        "spiceworks",
+    ];
+    spam_list.iter().any(|e| url.contains(e))
 }
